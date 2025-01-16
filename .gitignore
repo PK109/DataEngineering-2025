@@ -55,6 +55,16 @@ coverage.xml
 .hypothesis/
 .pytest_cache/
 cover/
+.ssh/
+
+# Local .terraform directories
+**/.terraform/*
+
+# .tfstate files
+*.tfstate
+*.tfstate.*
+*lock.hcl
+
 
 # Translations
 *.mo
