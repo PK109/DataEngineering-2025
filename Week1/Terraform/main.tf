@@ -9,23 +9,22 @@ terraform {
 
 provider "google" {
   # Configuration options
-  project = "fleet-aleph-447822-a2"
+  project = var.project_id
   region  = "europe-west3-c"
-  # credentials = "/workspaces/DataEngineering-2025/.ssh/terraform-runner-keys.json"
-  credentials = "/workspaces/DataEngineering-2025/.ssh/fleet-aleph-447822-a2-editor-keys.json"
+  credentials = var.credentials
 }
 
 resource "google_storage_bucket" "demo-bucket" {
-  name          = "fleet-aleph-447822-a2_demo-bucket"
-  location      = "EU"
+  name          = "${local.gcs_bucket_name}-1"
+  location      = var.location
   force_destroy = true
 
   # Optional, but recommended settings:
-  storage_class = "STANDARD"
+  storage_class               = var.gcs_storage_class
   uniform_bucket_level_access = true
 
   versioning {
-    enabled     = true
+    enabled = true
   }
 
   lifecycle_rule {
@@ -33,7 +32,7 @@ resource "google_storage_bucket" "demo-bucket" {
       type = "Delete"
     }
     condition {
-      age = 30  // days
+      age = 30 // days
     }
   }
 
@@ -41,6 +40,6 @@ resource "google_storage_bucket" "demo-bucket" {
 
 resource "google_bigquery_dataset" "dataset" {
   dataset_id = "Terraform_dataset"
-  project    = "fleet-aleph-447822-a2"
-  location   = "EU"
+  project    = var.project_id
+  location   = var.location
 }

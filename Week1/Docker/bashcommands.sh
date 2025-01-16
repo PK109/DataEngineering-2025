@@ -1,6 +1,6 @@
 # building custom image on dockerfile
 
- docker build -rm -t image:pandas .
+ docker build -t image:pandas .
 
 # creating network in docker
 docker network create postgres
@@ -35,14 +35,27 @@ python upload-data.py \
     --table_name=yellow_taxi_data \
     --file_url=https://d37ci6vzurychx.cloudfront.net/trip-data/yellow_tripdata_2024-01.parquet
 
-#running ingest script on container
+#running ingest script on container with 
 docker run -it \
-  --network=postgres \
+  --network=docker_default \
     taxi_ingest:v001 \
         --user=root \
         --password=root \
-        --host=pg-database \
+        --host=pgdatabase \
         --port=5432 \
         --database_name=ny_taxi \
-        --table_name=yellow_taxi_data \
-        --file_url=https://d37ci6vzurychx.cloudfront.net/trip-data/yellow_tripdata_2024-01.parquet
+        --table_name=green_taxi_data \
+        --file_url=https://d37ci6vzurychx.cloudfront.net/trip-data/green_tripdata_2019-10.parquet
+
+#running ingest script on container with zones
+
+docker run -it \
+  --network=docker_default \
+    zones_ingest:v001 \
+        --user=root \
+        --password=root \
+        --host=pgdatabase \
+        --port=5432 \
+        --database_name=ny_taxi \
+        --table_name=zones_data \
+        --file_url=https://d37ci6vzurychx.cloudfront.net/misc/taxi_zone_lookup.csv
