@@ -2,7 +2,7 @@ id: 04_gcp_kv
 namespace: zoomcamp
 
 tasks:
-
+# gcp_creds are provided manually to KV Store
   - id: gcp_project_id
     type: io.kestra.plugin.core.kv.Set
     key: GCP_PROJECT_ID
