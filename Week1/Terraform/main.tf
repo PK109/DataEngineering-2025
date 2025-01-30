@@ -10,7 +10,7 @@ terraform {
 provider "google" {
   # Configuration options
   project = var.project_id
-  region  = "europe-west3-c"
+  region  = var.location
   credentials = var.credentials
 }
 
@@ -39,7 +39,7 @@ resource "google_storage_bucket" "demo-bucket" {
 }
 
 resource "google_bigquery_dataset" "dataset" {
-  dataset_id = "Terraform_dataset"
+  dataset_id = var.bq_dataset_name
   project    = var.project_id
   location   = var.location
 }
