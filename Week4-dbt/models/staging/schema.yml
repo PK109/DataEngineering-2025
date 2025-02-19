@@ -1,0 +1,11 @@
+version: 2
+
+sources:
+  - name: staging
+    database: fleet-aleph-447822-a2
+    schema: taxi_dataset
+
+    tables:
+      - name: green_tripdata
+      - name: yellow_tripdata
+      
