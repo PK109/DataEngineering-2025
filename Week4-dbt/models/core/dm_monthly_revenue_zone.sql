@@ -13,7 +13,6 @@ with trips_data as (
     -- Revenue calculation 
     sum(fare_amount) as revenue_monthly_fare,
     sum(extra) as revenue_monthly_extra,
-    sum(mta_tax) as revenue_monthly_mta_tax,
     sum(tip_amount) as revenue_monthly_tip_amount,
     sum(tolls_amount) as revenue_monthly_tolls_amount,
     sum(improvement_surcharge) as revenue_monthly_improvement_surcharge,
