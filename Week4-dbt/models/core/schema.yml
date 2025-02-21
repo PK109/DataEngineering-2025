@@ -18,7 +18,7 @@ models:
 
       - name: service_type
         data_type: string
-        description: ""
+        description: "Only Yellow or Green allowed"
 
       - name: ratecodeid
         data_type: int64

@@ -14,7 +14,6 @@ yellow_tripdata as (
         "Yellow" as service_type
         from {{ ref('stg_yellow_tripdata') }}
 ),
-
 trips_unioned as (
     select * from green_tripdata
     union all
