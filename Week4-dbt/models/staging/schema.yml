@@ -8,6 +8,12 @@ sources:
     tables:
       - name: green_tripdata
       - name: yellow_tripdata
+
+  - name: homework_staging
+    database: fleet-aleph-447822-a2
+    schema: rides_dataset
+    tables:
+      - name: fhv_rides
       
 models:
   - name: stg_yellow_tripdata
